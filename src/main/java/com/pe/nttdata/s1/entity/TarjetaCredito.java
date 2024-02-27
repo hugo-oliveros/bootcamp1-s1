@@ -28,6 +28,7 @@ public class TarjetaCredito extends BaseDomain implements Serializable{
     @JsonSerialize(using = NoObjectIdSerializer.class)
     private ObjectId _id;
     private String type;
-    private BigDecimal monto;
+    private BigDecimal montoConsumed;
+    private BigDecimal montoTotal;
 
 }

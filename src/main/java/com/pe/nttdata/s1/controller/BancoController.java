@@ -58,7 +58,7 @@ public class BancoController {
                     .stream()
                     .filter(f -> f.getPersona().getDni().equals(pasivo.getPersona().getDni()) &&
                             f.getType().equals(pasivo.getType()))
-                    .findAny()
+                    .findFirst()
                     .get();
             pasivoReturn.setDescrip("Client " + pasivoReturn.getPersona().getDni() + " is exists type of cta.: " + pasivoReturn.getType());
         } catch (NullPointerException | NoSuchElementException e) {
@@ -90,7 +90,7 @@ public class BancoController {
                     .stream()
                     .filter(f -> f.getPersona().getDni().equals(pasivo.getPersona().getDni()) &&
                             f.getType().equals(Producto.AHORRO.getValue()))
-                    .findAny()
+                    .findFirst()
                     .get();
             pasivoReturn.setDescrip("Client " + pasivoReturn.getPersona().getDni() + " is exists type of cta.: " + pasivoReturn.getType());
         } catch (NullPointerException | NoSuchElementException e) {
@@ -103,13 +103,29 @@ public class BancoController {
     }
 
 
-    @PostMapping(path = "/customerConsume", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(path = "/customerConsume", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<Activo> customerConsume(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
                                      @RequestBody @NotNull Activo activo) {
 
         Activo activoReturn = Activo.builder().build();
 
-        activoReturn = activoService.save(activo);
+
+        try {
+            activoReturn = activoService
+                    .getAll()
+                    .stream()
+                    .filter(f -> f.getPersona().getDni().equals(activo.getPersona().getDni()) ||
+                                f.getEmpresa().getNombre().equals(activo.getEmpresa().getNombre()))
+                    .findFirst()
+                    .get();
+
+
+        } catch (NullPointerException | NoSuchElementException e) {
+        }
+
+        if (ObjectUtils.isEmpty(activoReturn.get_id()))
+            activoReturn = activoService.save(activo);
+
         return Mono.just(Objects.requireNonNull(activoReturn));
     }
 
