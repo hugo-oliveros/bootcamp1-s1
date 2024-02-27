@@ -10,6 +10,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Document(collection = "Activos")
 @Data
@@ -19,16 +20,14 @@ import java.io.Serializable;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Activo  extends BaseDomain implements Serializable{
+public class TarjetaCredito extends BaseDomain implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @JsonSerialize(using = NoObjectIdSerializer.class)
     private ObjectId _id;
-    private String descrip;
-    private Persona persona;
-    private Empresa empresa;
-    private TarjetaCredito tarjeta;
+    private String type;
+    private BigDecimal monto;
 
 }

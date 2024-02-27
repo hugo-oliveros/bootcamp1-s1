@@ -2,7 +2,10 @@ package com.pe.nttdata.s1.controller;
 
 
 import com.pe.nttdata.s1.commons.Producto;
+import com.pe.nttdata.s1.entity.Activo;
 import com.pe.nttdata.s1.entity.Pasivo;
+import com.pe.nttdata.s1.exception.ServerException;
+import com.pe.nttdata.s1.services.ActivoService;
 import com.pe.nttdata.s1.services.PasivoService;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
@@ -30,6 +33,8 @@ public class BancoController {
     @Autowired
     private PasivoService pasivoService;
 
+    @Autowired
+    private ActivoService activoService;
 
     @Autowired
     private MessageSource messageSource;
@@ -40,7 +45,6 @@ public class BancoController {
                 fromIterable(pasivoService
                         .getAll()).buffer();
     }
-
 
 
     @PostMapping(path = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -56,7 +60,7 @@ public class BancoController {
                             f.getType().equals(pasivo.getType()))
                     .findAny()
                     .get();
-            pasivoReturn.setDescrip("Client "+pasivoReturn.getPersona().getDni()+" is exists type of cta.: "+pasivoReturn.getType());
+            pasivoReturn.setDescrip("Client " + pasivoReturn.getPersona().getDni() + " is exists type of cta.: " + pasivoReturn.getType());
         } catch (NullPointerException | NoSuchElementException e) {
         }
 
@@ -69,12 +73,13 @@ public class BancoController {
 
 
     @PostMapping(path = "/saveBusiness", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<Pasivo> saveBusiness(@RequestHeader(name="Accept-Language",required = false) Locale locale, @RequestBody @NotNull Pasivo pasivo) {
+    public Mono<Pasivo> saveBusiness(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
+                                     @RequestBody @NotNull Pasivo pasivo) {
 
         Pasivo pasivoReturn = Pasivo.builder().build();
 
-        if( !pasivo.getType().equals(Producto.AHORRO.getValue())){
-            pasivoReturn.setDescrip(  messageSource.getMessage("message.bank.cta.error", null, locale));
+        if (!pasivo.getType().equals(Producto.AHORRO.getValue())) {
+            pasivoReturn.setDescrip(messageSource.getMessage("message.bank.cta.error", null, locale));
 
             return Mono.just(Objects.requireNonNull(pasivoReturn));
         }
@@ -87,7 +92,7 @@ public class BancoController {
                             f.getType().equals(Producto.AHORRO.getValue()))
                     .findAny()
                     .get();
-            pasivoReturn.setDescrip("Client "+pasivoReturn.getPersona().getDni()+" is exists type of cta.: "+pasivoReturn.getType());
+            pasivoReturn.setDescrip("Client " + pasivoReturn.getPersona().getDni() + " is exists type of cta.: " + pasivoReturn.getType());
         } catch (NullPointerException | NoSuchElementException e) {
         }
 
@@ -97,7 +102,16 @@ public class BancoController {
         return Mono.just(Objects.requireNonNull(pasivoReturn));
     }
 
+
+    @PostMapping(path = "/customerConsume", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Activo> customerConsume(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
+                                     @RequestBody @NotNull Activo activo) {
+
+        Activo activoReturn = Activo.builder().build();
+
+        activoReturn = activoService.save(activo);
+        return Mono.just(Objects.requireNonNull(activoReturn));
+    }
+
+
 }
-
-
-

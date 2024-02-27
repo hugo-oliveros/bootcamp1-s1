@@ -67,3 +67,18 @@ http://localhost:8085/v3/api-docs
     "dni": "10530025"
     }
     }'
+
+•	Verify that you can add only the "savings" account type 
+
+    curl --location 'localhost:8085/banco/api/v1/saveBusiness' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "type": "Ahorre2",
+    "maxMoviento": 10,
+    "descrip": "Cuenta bancia Cuenta corriente",
+    "persona": {
+    "nombre": "hugo",
+    "apellido": "oliveros",
+    "dni": "10530025"
+    }
+    }'

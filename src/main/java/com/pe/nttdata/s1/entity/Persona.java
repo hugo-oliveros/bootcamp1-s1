@@ -1,5 +1,7 @@
 package com.pe.nttdata.s1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.pe.nttdata.s1.domain.BaseDomain;
 import lombok.*;
@@ -15,6 +17,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @ToString
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Persona extends BaseDomain implements Serializable{
 
     private static final long serialVersionUID = 1L;
