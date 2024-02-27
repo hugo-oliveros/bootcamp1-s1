@@ -52,3 +52,18 @@ http://localhost:8085/v3/api-docs
     "dni": "10530023"
     }
     }'
+
+•	Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo, pero sí múltiples cuentas corrientes.
+
+    curl --location 'localhost:8085/banco/api/v1/saveBusiness' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "type": "Ahorro",
+    "maxMoviento": 10,
+    "descrip": "Cuenta bancia Cuenta corriente",
+    "persona": {
+    "nombre": "hugo",
+    "apellido": "oliveros",
+    "dni": "10530025"
+    }
+    }'

@@ -1,15 +1,20 @@
 package com.pe.nttdata.s1.controller;
 
 
+import com.pe.nttdata.s1.commons.Producto;
 import com.pe.nttdata.s1.entity.Pasivo;
 import com.pe.nttdata.s1.services.PasivoService;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
@@ -24,6 +29,19 @@ public class BancoController {
 
     @Autowired
     private PasivoService pasivoService;
+
+
+    @Autowired
+    private MessageSource messageSource;
+
+    @GetMapping(value = "/all")
+    public Flux<List<Pasivo>> getAll() {
+        return Flux.
+                fromIterable(pasivoService
+                        .getAll()).buffer();
+    }
+
+
 
     @PostMapping(path = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<Pasivo> save(@RequestBody @NotNull Pasivo pasivo) {
@@ -49,6 +67,35 @@ public class BancoController {
 
     }
 
+
+    @PostMapping(path = "/saveBusiness", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<Pasivo> saveBusiness(@RequestHeader(name="Accept-Language",required = false) Locale locale, @RequestBody @NotNull Pasivo pasivo) {
+
+        Pasivo pasivoReturn = Pasivo.builder().build();
+
+        if( !pasivo.getType().equals(Producto.AHORRO.getValue())){
+            pasivoReturn.setDescrip(  messageSource.getMessage("message.bank.cta.error", null, locale));
+
+            return Mono.just(Objects.requireNonNull(pasivoReturn));
+        }
+
+        try {
+            pasivoReturn = pasivoService
+                    .getAll()
+                    .stream()
+                    .filter(f -> f.getPersona().getDni().equals(pasivo.getPersona().getDni()) &&
+                            f.getType().equals(Producto.AHORRO.getValue()))
+                    .findAny()
+                    .get();
+            pasivoReturn.setDescrip("Client "+pasivoReturn.getPersona().getDni()+" is exists type of cta.: "+pasivoReturn.getType());
+        } catch (NullPointerException | NoSuchElementException e) {
+        }
+
+        if (ObjectUtils.isEmpty(pasivoReturn.get_id()))
+            pasivoReturn = pasivoService.save(pasivo);
+
+        return Mono.just(Objects.requireNonNull(pasivoReturn));
+    }
 
 }
 
