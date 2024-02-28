@@ -50,10 +50,6 @@ public class ActivoServiceImpl extends GenericServiceImpl<Activo, String> implem
         UpdateResult updateResult = mongoTemplate.getCollection(mongoTemplate.getCollectionName(Activo.class))
                 .updateOne(Filters.eq("_id", new ObjectId(activo.get_id().toHexString())),
                         Updates.set("tarjeta.montoConsumed", activo.getTarjeta().getMontoConsumed().toString()));
-
-        System.out.println( updateResult.getModifiedCount() );
-        System.out.println( activo.getTarjeta().getMontoConsumed().toString() );
-
         return null;
     }
 

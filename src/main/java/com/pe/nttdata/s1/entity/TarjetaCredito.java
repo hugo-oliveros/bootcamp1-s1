@@ -30,5 +30,6 @@ public class TarjetaCredito extends BaseDomain implements Serializable{
     private String type;
     private BigDecimal montoConsumed;
     private BigDecimal montoTotal;
+    private String numberAccount;
 
 }
