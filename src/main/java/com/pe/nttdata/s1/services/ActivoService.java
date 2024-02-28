@@ -10,6 +10,8 @@ public interface ActivoService extends GenericService<Activo, String> {
 
     Mono<Activo> findById(String _id) throws JsonProcessingException;
 
+    Void update(Activo activo);
+
     Void deleteById(String _id);
 
 }

@@ -4,10 +4,11 @@ package com.pe.nttdata.s1.controller;
 import com.pe.nttdata.s1.commons.Producto;
 import com.pe.nttdata.s1.entity.Activo;
 import com.pe.nttdata.s1.entity.Pasivo;
-import com.pe.nttdata.s1.exception.ServerException;
 import com.pe.nttdata.s1.services.ActivoService;
 import com.pe.nttdata.s1.services.PasivoService;
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
+import org.apache.commons.lang3.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -16,12 +17,11 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-
-import org.apache.commons.lang3.ObjectUtils;
 
 @RestController
 @RequestMapping("banco/api/v1")
@@ -105,29 +105,41 @@ public class BancoController {
 
     @PatchMapping(path = "/customerConsume", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<Activo> customerConsume(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
-                                     @RequestBody @NotNull Activo activo) {
+                                        @RequestBody @NotNull Activo activo) {
 
         Activo activoReturn = Activo.builder().build();
-
 
         try {
             activoReturn = activoService
                     .getAll()
                     .stream()
                     .filter(f -> f.getPersona().getDni().equals(activo.getPersona().getDni()) ||
-                                f.getEmpresa().getNombre().equals(activo.getEmpresa().getNombre()))
+                            f.getEmpresa().getNombre().equals(activo.getEmpresa().getNombre()))
+                    // .filter(f -> f.getTarjeta().getMontoTotal().doubleValue()<100)
                     .findFirst()
                     .get();
-
 
         } catch (NullPointerException | NoSuchElementException e) {
         }
 
-        if (ObjectUtils.isEmpty(activoReturn.get_id()))
+        if (ObjectUtils.isEmpty(activoReturn.get_id())) {
             activoReturn = activoService.save(activo);
+        } else {
+
+            activoReturn.getTarjeta().setMontoConsumed(
+                    totalAmount(activoReturn.getTarjeta().getMontoConsumed(),
+                            activo.getTarjeta().getMontoConsumed()));
+            activoService.update(activoReturn);
+        }
 
         return Mono.just(Objects.requireNonNull(activoReturn));
     }
 
+
+    private BigDecimal totalAmount(BigDecimal parameter, BigDecimal neValue) {
+        var sumTotal = new BigDecimal(String.valueOf(parameter));
+        BigDecimal resultSum = sumTotal.add(neValue);
+        return resultSum;
+    }
 
 }
