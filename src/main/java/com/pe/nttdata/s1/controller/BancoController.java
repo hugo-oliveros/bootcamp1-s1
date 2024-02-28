@@ -147,10 +147,4 @@ public class BancoController {
     }
 
 
-    private BigDecimal totalAmount(BigDecimal parameter, BigDecimal neValue) {
-        var sumTotal = new BigDecimal(String.valueOf(parameter));
-        BigDecimal resultSum = sumTotal.add(neValue);
-        return resultSum;
-    }
-
 }
