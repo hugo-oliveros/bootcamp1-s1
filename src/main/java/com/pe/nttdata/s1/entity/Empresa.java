@@ -27,6 +27,7 @@ public class Empresa  extends BaseDomain implements Serializable{
     @JsonSerialize(using = NoObjectIdSerializer.class)
     private ObjectId _id;
     private String nombre;
+    private String ruc;
     private String direccion;
 
 }
