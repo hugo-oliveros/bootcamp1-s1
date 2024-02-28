@@ -136,10 +136,6 @@ public class BancoController {
 
             activoReturn.getTarjeta().setMontoConsumed(new BigDecimal(opcional));
 
-            /*activoReturn.getTarjeta().setMontoConsumed(
-                    totalAmount(activoReturn.getTarjeta().getMontoConsumed(),
-                            activo.getTarjeta().getMontoConsumed()));
-            */
             activoService.update(activoReturn);
         }
 
