@@ -47,13 +47,6 @@ public class BancoController {
     @Autowired
     private BancoService bancoService;
 
-    /*
-    @Autowired
-    private ActivoService activoService;
-
-    @Autowired
-    private MessageSource messageSource;*/
-
     @GetMapping(value = "/all")
     public Flux<Pasivo> getAll() {
         return bancoService.findAllPasivo();
