@@ -1,24 +1,20 @@
 package com.pe.nttdata.primer.controller;
 
 
+import com.pe.nttdata.primer.commons.ProductoEnum;
+import com.pe.nttdata.primer.entity.Activo;
 import com.pe.nttdata.primer.entity.Pasivo;
 import com.pe.nttdata.primer.services.services.BancoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import javax.validation.constraints.NotNull;
+import java.util.Locale;
 
 /**
  *Implement EmpresaRepository. <br/>
@@ -47,6 +43,13 @@ public class BancoController {
     @Autowired
     private BancoService bancoService;
 
+    /*
+    @Autowired
+    private ActivoService activoService;*/
+
+    @Autowired
+    private MessageSource messageSource;
+
     @GetMapping(value = "/all")
     public Flux<Pasivo> getAll() {
         return bancoService.findAllPasivo();
@@ -60,39 +63,22 @@ public class BancoController {
         return bancoService.saveWithVerification(pasivo);
     }
 
-    /*
-
     @PostMapping(path = "/saveBusiness", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<Pasivo> saveBusiness(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
-                                     @RequestBody @NotNull Pasivo pasivo) {
+    public Mono<Activo> saveBusiness(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
+                                     @RequestBody @NotNull Activo activo) {
 
-        Pasivo pasivoReturn = Pasivo.builder().build();
 
-        if (!pasivo.getType().equals(Producto.AHORRO.getValue())) {
+        /*
+        if (!pasivo.getType().equals(ProductoEnum.AHORRO.getValue())) {
+            Pasivo pasivoReturn = Pasivo.builder().build();
             pasivoReturn.setDescrip(messageSource.getMessage("message.bank.cta.error", null, locale));
+            //return Mono.just(pasivoReturn);
+        }*/
 
-            return Mono.just(Objects.requireNonNull(pasivoReturn));
+        return bancoService.saveBusiness(activo);
         }
 
-
-        try {
-            pasivoReturn = pasivoService
-                    .getAll()
-                    .stream()
-                    .filter(f -> f.getPersona().getDni().equals(pasivo.getPersona().getDni()) &&
-                            f.getType().equals(Producto.AHORRO.getValue()))
-                    .findFirst()
-                    .get();
-            pasivoReturn.setDescrip("Client " + pasivoReturn.getPersona().getDni() + " is exists type of cta.: " + pasivoReturn.getType());
-        } catch (NullPointerException | NoSuchElementException e) {
-        }
-
-        if (ObjectUtils.isEmpty(pasivoReturn.get_id()))
-            pasivoReturn = pasivoService.save(pasivo);
-
-        return Mono.just(Objects.requireNonNull(pasivoReturn));
-    }
-
+    /*
 
     @PatchMapping(path = "/customerConsume", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<Activo> customerConsume(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
