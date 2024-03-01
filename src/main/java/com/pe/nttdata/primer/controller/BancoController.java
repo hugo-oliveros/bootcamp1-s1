@@ -1,13 +1,11 @@
 package com.pe.nttdata.primer.controller;
 
 
-import com.pe.nttdata.primer.commons.ProductoEnum;
 import com.pe.nttdata.primer.entity.Activo;
 import com.pe.nttdata.primer.entity.Pasivo;
 import com.pe.nttdata.primer.services.services.BancoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

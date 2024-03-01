@@ -45,7 +45,9 @@ import javax.validation.constraints.NotNull;
 public class EmpresaController {
 
    /**
-    * EmpresaRepository repository
+    * <>p</>
+    * .
+    * EmpresaRepository empresaRepository
     **/
     @Autowired
     private EmpresaRepository empresaRepository;
@@ -54,7 +56,7 @@ public class EmpresaController {
     /**
      * <>p</>
      * .
-     * List all elements from Mongo passing
+     * Flux all elements from Mongo passing
      * for reactivate Flux
      * @return return all elements from Mono passing
      * for reactivate Flux and return Status OK.
@@ -69,7 +71,7 @@ public class EmpresaController {
     /**
      * <>p</>
      * .
-     * List all elements from Mongo passing for
+     * Flux all elements from Mongo passing for
      * reactivate Flux passing the id as a parameter
      * @param id id is the input parameter and must not be null
      * @return return all elements from Mono passing
