@@ -128,7 +128,7 @@ public class BancoService {
      **/
     public static Predicate<Activo> filterActivo(final String dni,
                                                  final String nombreEmpresa) {
-        return (Activo req) -> (req.getPersona().getDni().equals(dni)
+        return (Activo req) -> (req.getPersona().getDni().equals("")
                 || req.getEmpresa().getNombre().equals(nombreEmpresa));
     }
 
