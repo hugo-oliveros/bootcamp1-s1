@@ -43,12 +43,6 @@ public class BancoController {
     @Autowired
     private BancoService bancoService;
 
-    /*
-    @Autowired
-    private ActivoService activoService;*/
-
-    @Autowired
-    private MessageSource messageSource;
 
     @GetMapping(value = "/allPasivo")
     @ResponseStatus(HttpStatus.OK)
@@ -75,16 +69,7 @@ public class BancoController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<Activo> saveBusiness(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
                                      @RequestBody @NotNull Activo activo) {
-
-
-        /*
-        if (!pasivo.getType().equals(ProductoEnum.AHORRO.getValue())) {
-            Pasivo pasivoReturn = Pasivo.builder().build();
-            pasivoReturn.setDescrip(messageSource.getMessage("message.bank.cta.error", null, locale));
-            //return Mono.just(pasivoReturn);
-        }*/
-
         return bancoService.saveBusiness(activo);
-        }
+    }
 
 }
