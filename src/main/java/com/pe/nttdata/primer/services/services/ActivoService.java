@@ -44,7 +44,6 @@ public class ActivoService {
                 });
     }
 
-
     public Mono<Void> deleteById(String id) {
         return activoRepository.deleteById(id);
     }

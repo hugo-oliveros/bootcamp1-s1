@@ -50,20 +50,29 @@ public class BancoController {
     @Autowired
     private MessageSource messageSource;
 
-    @GetMapping(value = "/all")
-    public Flux<Pasivo> getAll() {
+    @GetMapping(value = "/allPasivo")
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<Pasivo> getAllPasivo() {
         return bancoService.findAllPasivo();
     }
 
+    @GetMapping(value = "/allActivo")
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<Activo> getAllActivo() {
+        return bancoService.findAllActivo();
+    }
 
     @PostMapping(path = "/save",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<Pasivo> save(@RequestBody @NotNull Pasivo pasivo) {
         return bancoService.saveWithVerification(pasivo);
     }
 
-    @PostMapping(path = "/saveBusiness", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/saveBusiness",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<Activo> saveBusiness(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
                                      @RequestBody @NotNull Activo activo) {
 
@@ -77,46 +86,5 @@ public class BancoController {
 
         return bancoService.saveBusiness(activo);
         }
-
-    /*
-
-    @PatchMapping(path = "/customerConsume", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<Activo> customerConsume(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
-                                        @RequestBody @NotNull Activo activo) {
-
-        Activo activoReturn = Activo.builder().build();
-
-        try {
-            activoReturn = activoService
-                    .getAll()
-                    .stream()
-                    .filter(f -> f.getPersona().getDni().equals(activo.getPersona().getDni()) ||
-                            f.getEmpresa().getNombre().equals(activo.getEmpresa().getNombre()))
-                    .findFirst()
-                    .get();
-
-        } catch (NullPointerException | NoSuchElementException e) {
-        }
-
-        if (ObjectUtils.isEmpty(activoReturn.get_id())) {
-            activoReturn = activoService.save(activo);
-        } else {
-
-            double opcional = activoService
-                    .getAll().stream()
-                    .filter(f -> f.getPersona().getDni().equals(activo.getPersona().getDni()) ||
-                            f.getEmpresa().getNombre().equals(activo.getEmpresa().getNombre()))
-                    .mapToDouble(m -> {
-                        BigDecimal resultSum = m.getTarjeta().getMontoConsumed().add(activo.getTarjeta().getMontoConsumed());
-                        return resultSum.doubleValue();
-                    }).findFirst().getAsDouble();
-
-            activoReturn.getTarjeta().setMontoConsumed(new BigDecimal(opcional));
-            activoService.update(activoReturn);
-        }
-
-        return Mono.just(Objects.requireNonNull(activoReturn));
-    }*/
-
 
 }

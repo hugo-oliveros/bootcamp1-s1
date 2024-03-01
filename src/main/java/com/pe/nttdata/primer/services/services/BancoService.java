@@ -14,6 +14,8 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
+import java.util.Optional;
 import java.util.function.Predicate;
 
 @Service
@@ -22,32 +24,36 @@ import java.util.function.Predicate;
 public class BancoService {
 
     @Autowired
-    private PasivoRepository pasivoRepository;
+    private PasivoService pasivoService;
 
     @Autowired
-    private ActivoRepository activoRepository;
+    private ActivoService activoService;
 
     public Flux<Pasivo> findAllPasivo() {
-        return pasivoRepository.findAll();
+        return pasivoService.findAll();
     }
 
     public Flux<Activo> findAllActivo() {
-        return activoRepository.findAll();
+        return activoService.findAll();
     }
 
-    public Mono<Pasivo> findById(String id){
-        return pasivoRepository.findById(id);
+    public Mono<Pasivo> findPasivoById(String id){
+        return pasivoService.findById(id);
     }
 
+    public static Predicate<Pasivo> filterPasivo(String dni,String typeCta) {
+        return (Pasivo req) -> (req.getPersona().getDni().equals(dni) && req.getType().equals(typeCta));
+    }
 
-    public static Predicate<Pasivo> filterPasivoDNI(String dni,String typeCta) {
-        return (Pasivo p) -> (p.getPersona().getDni().equals(dni) && p.getType().equals(typeCta));
+    public static Predicate<Activo> filterActivo(String dni, String nombreEmpresa) {
+        return (Activo req) -> (req.getPersona().getDni().equals(dni) ||
+                req.getEmpresa().getNombre().equals(nombreEmpresa));
     }
 
     public Mono<Pasivo> saveWithVerification
             (Pasivo pasivo) {
         return Mono.from(findAllPasivo()
-                .filter(filterPasivoDNI(pasivo.getPersona().getDni(),pasivo.getType()))
+                .filter(filterPasivo(pasivo.getPersona().getDni(),pasivo.getType()))
                         .map(req->{
                             req = Pasivo.builder().build();
                             req.setDescrip("Client " +
@@ -55,20 +61,32 @@ public class BancoService {
                                     " is exists type of cta.: " +
                                     pasivo.getType());
                             return req;
-                        })).switchIfEmpty(pasivoRepository.save(pasivo));
+                        })).switchIfEmpty(pasivoService.save(pasivo));
     }
 
     public Mono<Activo> saveBusiness
             (Activo activo) {
 
-        return  Mono.just(Activo.builder().build());
+        return Mono.from(findAllActivo()
+                .filter(filterActivo(activo.getPersona().getDni(),activo.getEmpresa().getNombre()))
+                .map(req->{
+                    activo.getTarjeta().setMontoConsumed(req.getTarjeta()
+                            .getMontoConsumed()
+                            .add(activo.getTarjeta().getMontoConsumed()));
+                    return req;
+                }))
+                .map(Optional::of)
+                .defaultIfEmpty(Optional.empty())
+                .flatMap(optional -> {
+                    if (optional.isPresent()) {
+                        return activoService.update(optional.get().getId().toString(),activo);
+                    }
+                    return Mono.empty();
+                }).switchIfEmpty(activoService.save(activo));
     }
-
 
     public Mono<Void> deleteById(String id) {
-        return pasivoRepository.deleteById(id);
+        return pasivoService.deleteById(id);
     }
-
-
 
 }
