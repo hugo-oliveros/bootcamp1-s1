@@ -64,7 +64,6 @@ public class BancoService {
 
     public Mono<Activo> saveBusiness
             (Activo activo) {
-
         return Mono.from(findAllActivo()
                 .filter(filterActivo(activo.getPersona().getDni(),activo.getEmpresa().getNombre()))
                 .map(req->{
