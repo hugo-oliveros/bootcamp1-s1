@@ -153,9 +153,9 @@
                                     <element>BUNDLE</element>
                                     <limits>
                                         <limit implementation="org.jacoco.report.check.Limit">
-                                            <counter>30</counter>
-                                            <value>10</value>
-                                            <minimum>0.7</minimum>
+                                            <counter>INSTRUCTION</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0%</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

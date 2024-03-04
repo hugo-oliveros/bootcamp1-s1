@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.18">
+<file name="C:\relic\bs-product-inventory-v1\src\main\java\com\ncnp\services\v1\api\service\impl\ProductInventoryServiceImpl.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\EventsSubscriptionApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\Addressable.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\Characteristic.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\CharacteristicRelationship.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ConstraintRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\EntityRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\EntityValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\Error.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\EventSubscription.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\EventSubscriptionInput.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\Extensible.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\Feature.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\FeatureRelationship.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\Note.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\OrderItemActionType.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\Place.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\PlaceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\RelatedEntityRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\RelatedParty.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\RelatedPlaceRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\RelatedServiceOrderItem.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ResourceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\Service.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceAttributeValueChangeEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceAttributeValueChangeEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceCreate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceCreateEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceCreateEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceDeleteEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceDeleteEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceRelationship.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceSpecificationRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceStateChangeEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceStateChangeEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceStateType.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\ServiceUpdate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\models\TimePeriod.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\NotificationListenersClientSideApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf638\ServiceApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\EventsSubscriptionApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Addressable.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Attachment.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\AttachmentRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\AttachmentRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Characteristic.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\CharacteristicRelationship.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ConstraintRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Entity.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\EntityRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Error.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\EventSubscription.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\EventSubscriptionInput.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Extensible.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Feature.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\FeatureRelationship.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\LogicalResource.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Note.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\PhysicalResource.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Place.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\PlaceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Quantity.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\RelatedParty.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\RelatedPlaceRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\Resource.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceAdministrativeStateType.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceAttributeValueChangeEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceAttributeValueChangeEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceCreate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceCreateEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceCreateEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceDeleteEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceDeleteEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceOperationalStateType.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceRelationship.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceSpecificationRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceStateChangeEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceStateChangeEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceStatusType.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceUpdate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\ResourceUsageStateType.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\models\TimePeriod.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\NotificationListenersClientSideApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client\tmf639\ResourceApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\AgreementItemRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\BillingAccountRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\Characteristic.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\EntityRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\Error.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\EventSubscription.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\EventSubscriptionInput.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\Money.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\Price.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\PriceAlteration.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\Product.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductAttributeValueChangeEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductAttributeValueChangeEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductBatchEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductBatchEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductCreate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductCreateEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductCreateEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductDeleteEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductDeleteEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductOfferingPriceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductOfferingRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductPrice.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductRelationship.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductSpecificationRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductStateChangeEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductStateChangeEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductStatusType.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductTerm.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ProductUpdate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\Quantity.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\RelatedParty.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\RelatedPlaceRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\RelatedProductOrderItem.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ResourceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\ServiceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\TargetProductSchema.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\models\TimePeriod.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client0\ProductApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\ActivacionPextApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\ActualizaCintilloApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\ConfirmAsignedResourcesApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\ConfirmServiceAvailabilityApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\FindCtoApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse200.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse2001.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse2001Result.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse2002.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse2002Result.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse2002ResultFibras.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse2002ResultTramosCable.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse2003.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse2003Result.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse200Result.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse200ResultBornes.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse200ResultCto.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse200ResultOdf.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse200ResultOdfPuerto.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InlineResponse400.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPActivacionPEXTResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPActualizaCintilloResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPBorneResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPConfirmAsignedResourcesResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPConfirmServiceAvailabilityP2PResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPConfirmServiceAvailabilityResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPCTOResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPElementosActivacionPEXT.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPFindCTOResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPGenericResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPMapeoBornesCTO.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPODFResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPPredioResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPQueryAddressResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPReasignResourcesResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPReleaseResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\models\InventarioOSPReserveResponse.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\QueryAddressApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\ReasignResourcesApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\ReleaseApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\client1\ReserveApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\config\HomeController.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\config\ServicesHttpClientConfig.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\OpenAPI2SpringBoot.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\RFC3339DateFormat.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\ApiUtil.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\AgreementItemRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\BillingAccountRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\Characteristic.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\EntityRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\Error.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\EventSubscription.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\EventSubscriptionInput.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\Money.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\Price.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\PriceAlteration.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\Product.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductAttributeValueChangeEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductAttributeValueChangeEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductBatchEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductBatchEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductCreate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductCreateEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductCreateEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductDeleteEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductDeleteEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductOfferingPriceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductOfferingRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductPrice.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductRelationship.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductSpecificationRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductStateChangeEvent.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductStateChangeEventPayload.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductStatusType.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductTerm.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ProductUpdate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\Quantity.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\RelatedParty.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\RelatedPlaceRefOrValue.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\RelatedProductOrderItem.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ResourceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\ServiceRef.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\TargetProductSchema.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\models\TimePeriod.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\ProductApi.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\ProductApiController.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\target\generated-sources\openapi\src\main\java\com\ncnp\services\server\ProductApiDelegate.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\src\test\java\com\ncnp\services\v1\api\delegate\ProductApiDelegateImplTest.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\src\test\java\com\ncnp\services\v1\api\service\OspServiceTest.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\src\test\java\com\ncnp\services\v1\api\service\ProductInventoryServiceTest.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\src\test\java\com\ncnp\services\v1\api\service\ResourceInventoryServiceTest.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\src\test\java\com\ncnp\services\v1\api\service\ServiceInventoryServiceTest.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\src\test\java\com\ncnp\services\v1\builder\OspAddressToPlaceListBuilderTest.java">
+</file>
+<file name="C:\relic\bs-product-inventory-v1\src\test\java\com\ncnp\services\v1\util\UtilsTest.java">
+</file>
+</checkstyle>
