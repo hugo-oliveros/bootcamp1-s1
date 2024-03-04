@@ -2,6 +2,7 @@ package com.pe.nttdata.services;
 
 import com.pe.nttdata.entity.Activo;
 import com.pe.nttdata.entity.Pasivo;
+import com.pe.nttdata.entity.TarjetaCredito;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -146,7 +148,11 @@ public class BancoService {
                 .filter(filterPasivo(pasivo.getPersona().getDni(),
                         pasivo.getType()))
                         .map(req -> {
+                            TarjetaCredito tarjetaCredito = TarjetaCredito.builder().build();
+                            tarjetaCredito.setMontoTotal(req.getTarjeta().getMontoTotal());
                             req = Pasivo.builder().build();
+                            req.setTarjeta(tarjetaCredito);
+                            req.setCatalog("402");
                             req.setDescrip("Client "
                                     + pasivo.getPersona().getDni()
                                     + " is exists type of cta.: "

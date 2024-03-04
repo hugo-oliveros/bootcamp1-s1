@@ -27,6 +27,7 @@ public class Pasivo extends BaseDomain implements Serializable{
     @JsonSerialize(using = NoObjectIdSerializer.class)
     private ObjectId id;
     private String type;
+    private String catalog;
     private Integer maxMoviento;
     private String descrip;
     private Persona persona;
