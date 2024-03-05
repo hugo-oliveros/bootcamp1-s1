@@ -27,31 +27,45 @@ public class Activo  extends BaseDomain implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
     /**
-     * ..
+     *.
      **/
     @Id
     @JsonSerialize(using = NoObjectIdSerializer.class)
     private ObjectId id;
 
     /**
-     * ..
+     *.
+     **/
+    private String type;
+
+    /**
+     *.
+     **/
+    private String typeCliente;
+
+    /**
+     *.
+     **/
+    private String catalog;
+
+    /**
+     *.
      **/
     private String descrip;
 
     /**
-     * ..
+     *.
      **/
     private Persona persona;
 
     /**
-     * ..
+     *.
      **/
     private Empresa empresa;
 
     /**
-     * ..
+     *.
      **/
     private TarjetaCredito tarjeta;
 

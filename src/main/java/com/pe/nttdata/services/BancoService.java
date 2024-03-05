@@ -126,15 +126,12 @@ public class BancoService {
      * .
      * Flux all elements from Mongo passing
      * for reactivate Flux
-     * @param dni parameter DNI
-     * @param nombreEmpresa parameter name Company.
+     * @param rucEmpresa parameter RucEmpresa
      * @return Predicate
      *
      **/
-    public static Predicate<Activo> filterActivo(final String dni,
-                                                 final String nombreEmpresa) {
-        return (Activo req) -> (req.getPersona().getDni().equals("")
-                || req.getEmpresa().getNombre().equals(nombreEmpresa));
+    public static Predicate<Activo> filterActivo(final String rucEmpresa) {
+        return (Activo req) -> (req.getEmpresa().getRuc().equals(rucEmpresa));
     }
 
     /**
@@ -154,22 +151,27 @@ public class BancoService {
                         .map(req -> {
                             TarjetaCredito tarjetaCredito = TarjetaCredito.builder().build();
                             tarjetaCredito.setMontoTotal(req.getTarjeta().getMontoTotal());
-                            String TypeCLiente = ProductoEnum.valueOf(req.getTypeCliente()).getValue();
+                            String typeCLiente = ProductoEnum.valueOf(req.getTypeCliente()).getValue();
                             maxMov.set(req.getMaxMoviento());//Atomic
                             ObjectId id = req.getId();
                             req = Pasivo.builder().build();
                             req.setId(id);
-                            req.setCatalog("402");
-                            req.setTypeCliente(TypeCLiente);
+                            req.setCatalog("402");//isExist
+                            req.setTypeCliente(typeCLiente);
                             req.setMontoTotal(tarjetaCredito.getMontoTotal());
                             req.setMaxMoviento(maxMov.get());
                             req.setDescrip("Client "
                                     + pasivo.getPersona().getDni()
                                     + " is exists type of cta.: "
                                     + pasivo.getType());
-                            req.setPersona("");
                             return req;
-                        })).switchIfEmpty(pasivoService.save(pasivo));
+                        })).switchIfEmpty(pasivoService.save(pasivo))
+                .onErrorResume(error->{
+                    log.error(error.getMessage());
+                    Pasivo pas = Pasivo.builder().build();
+                    pas.setDescrip("Finder error.");
+                    return Mono.just(pas);
+                });
     }
 
     /**
@@ -183,15 +185,24 @@ public class BancoService {
      **/
     public Mono<Activo> saveBusiness(final Activo activo) {
         return Mono.from(findAllActivo()
-                .filter(filterActivo(activo.getPersona().getDni(),
-                        activo.getEmpresa().getNombre()))
+                .filter(filterActivo(activo.getEmpresa().getRuc()))
                 .map(req -> {
-                    activo.getTarjeta().setMontoConsumed(req.getTarjeta()
+                    /*activo.getTarjeta().setMontoConsumed(req.getTarjeta()
                             .getMontoConsumed()
-                            .add(activo.getTarjeta().getMontoConsumed()));
+                            .add(activo.getTarjeta().getMontoConsumed()));*/
+                    String typeCLiente = ProductoEnum.valueOf(req.getTypeCliente()).getValue();
+                    ObjectId id = req.getId();
+                    req = Activo.builder().build();
+                    req.setId(id);
+                    req.setCatalog("402");//isExist
+                    req.setTypeCliente(typeCLiente);
+                    req.setDescrip("Client "
+                            + activo.getEmpresa().getRuc()
+                            + " is exists type of cta.: "
+                            + activo.getType());
                     return req;
-                }))
-                .map(Optional::of)
+                })).switchIfEmpty(activoService.save(activo))
+                /*.map(Optional::of)
                 .defaultIfEmpty(Optional.empty())
                 .flatMap(optional -> {
                     if (optional.isPresent()) {
@@ -199,7 +210,13 @@ public class BancoService {
                                 optional.get().getId().toString(), activo);
                     }
                     return Mono.empty();
-                }).switchIfEmpty(activoService.save(activo));
+                }).switchIfEmpty(activoService.save(activo))*/
+                .onErrorResume(error->{
+                    log.error(error.getMessage());
+                    Activo act = Activo.builder().build();
+                    act.setDescrip("Finder error.");
+                    return Mono.just(act);
+                });
     }
 
     /**
