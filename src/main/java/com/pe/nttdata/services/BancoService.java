@@ -1,10 +1,12 @@
 package com.pe.nttdata.services;
 
+import com.pe.nttdata.commons.ProductoEnum;
 import com.pe.nttdata.entity.Activo;
 import com.pe.nttdata.entity.Pasivo;
 import com.pe.nttdata.entity.TarjetaCredito;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import java.math.BigDecimal;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
 /**
@@ -144,19 +147,27 @@ public class BancoService {
      *
      **/
     public Mono<Pasivo> saveWithVerification(final Pasivo pasivo) {
+        AtomicInteger maxMov = new AtomicInteger(0);
         return Mono.from(findAllPasivo()
                 .filter(filterPasivo(pasivo.getPersona().getDni(),
                         pasivo.getType()))
                         .map(req -> {
                             TarjetaCredito tarjetaCredito = TarjetaCredito.builder().build();
                             tarjetaCredito.setMontoTotal(req.getTarjeta().getMontoTotal());
+                            String TypeCLiente = ProductoEnum.valueOf(req.getTypeCliente()).getValue();
+                            maxMov.set(req.getMaxMoviento());//Atomic
+                            ObjectId id = req.getId();
                             req = Pasivo.builder().build();
-                            req.setTarjeta(tarjetaCredito);
+                            req.setId(id);
                             req.setCatalog("402");
+                            req.setTypeCliente(TypeCLiente);
+                            req.setMontoTotal(tarjetaCredito.getMontoTotal());
+                            req.setMaxMoviento(maxMov.get());
                             req.setDescrip("Client "
                                     + pasivo.getPersona().getDni()
                                     + " is exists type of cta.: "
                                     + pasivo.getType());
+                            req.setPersona("");
                             return req;
                         })).switchIfEmpty(pasivoService.save(pasivo));
     }

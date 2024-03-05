@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 
 @Document(collection = "Pasivo")
@@ -27,8 +28,10 @@ public class Pasivo extends BaseDomain implements Serializable{
     @JsonSerialize(using = NoObjectIdSerializer.class)
     private ObjectId id;
     private String type;
+    private String typeCliente;
     private String catalog;
     private Integer maxMoviento;
+    private BigDecimal montoTotal;
     private String descrip;
     private Persona persona;
     private TarjetaCredito tarjeta;
