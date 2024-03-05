@@ -37,10 +37,8 @@ import javax.validation.constraints.NotNull;
 @Slf4j
 public class BancoController {
 
-
     @Autowired
     private BancoService bancoService;
-
 
     @GetMapping(value = "/allPasivo")
     @ResponseStatus(HttpStatus.OK)
@@ -54,7 +52,6 @@ public class BancoController {
         return bancoService.findAllActivo();
     }
 
-
     @GetMapping(value = "/findByDNI/{dni}")
     @ResponseStatus(HttpStatus.OK)
     public Mono<Activo> findByDNI(@PathVariable("dni")
@@ -62,9 +59,16 @@ public class BancoController {
         return bancoService.findByDNI(dni);
     }
 
+    @GetMapping(value = "/findByRUC/{ruc}")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Activo> findByRUC(@PathVariable("ruc")
+                                  @NotNull final String ruc) {
+        return bancoService.findByRUC(ruc);
+    }
+
     @GetMapping(value = "/updateStatusByid/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<Activo> updateStatusByDNI(@PathVariable("id")
+    public Mono<Activo> updateStatus(@PathVariable("id")
                                   @NotNull final String id) {
         return bancoService.updateById(id);
     }

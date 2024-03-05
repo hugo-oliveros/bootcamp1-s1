@@ -131,10 +131,26 @@ public class BancoService {
         return activoService.findByDNI(dni);
     }
 
+    /**
+     * <>p</>
+     * .
+     * Flux all elements from Mongo passing
+     * for reactivate Flux
+     * @param ruc parameter ID
+     * @return return all elements from Mono passing
+     * for reactivate Mono and return Status OK.
+     *
+     **/
+    public Mono<Activo> findByRUC(final String ruc) {
+        return activoService.findByRUC(ruc);
+    }
 
     public Mono<Activo> updateById(final String id) {
         return findActivoById(id).map(m->{
-            m.setStatus("PERSONAL-ON");
+            if(m.getStatus().equals("PERSONAL-OFF"))
+                m.setStatus("PERSONAL-ON");
+            if(m.getStatus().equals("BUSSNESS-OFF"))
+                m.setStatus("BUSSNESS-ON");
             return m;
         }).flatMap(req->{
             return activoService.update(id, req);

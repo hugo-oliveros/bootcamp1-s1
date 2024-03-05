@@ -138,6 +138,25 @@ public class ActivoService {
 
     }
 
+
+    public  Mono<Activo> findByRUC(final String ruc) {
+        return Mono.from(activoRepository.findAll()
+                        .filter(f->f.getEmpresa().getRuc().equals(ruc))
+                        .map(m -> MapperUtils.mapper(Activo.class, m)))
+                .switchIfEmpty(
+                        Mono.defer(() ->{
+                            Activo actError = Activo.builder().build();
+                            actError.setDescrip("The document was not found... "+ruc);
+                            return Mono.just(actError);
+                        }))
+                .onErrorResume(error->{
+                    Activo actError = Activo.builder().build();
+                    actError.setDescrip("Error found...: "+error);
+                    return Mono.just(actError);
+                });
+
+    }
+
     /**
      * <>p</>
      * .
