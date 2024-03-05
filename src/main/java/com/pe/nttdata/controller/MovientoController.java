@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Date;
+
 /**
  *Implement MovientoController. <br/>
  *<b>Class</b>: {@link MovientoController}<br/>
@@ -94,6 +96,7 @@ public class MovientoController {
           produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.CREATED)
   public Mono<Moviento> save(final @RequestBody @NotNull Moviento moviento) {
+    moviento.setFechaMovi(new Date());
     return movimientoService.save(moviento);
   }
 
