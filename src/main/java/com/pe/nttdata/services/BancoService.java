@@ -1,9 +1,7 @@
 package com.pe.nttdata.services;
 
 import com.pe.nttdata.commons.ProductoEnum;
-import com.pe.nttdata.entity.Activo;
-import com.pe.nttdata.entity.Pasivo;
-import com.pe.nttdata.entity.TarjetaCredito;
+import com.pe.nttdata.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
@@ -104,6 +102,45 @@ public class BancoService {
         return pasivoService.findById(id);
     }
 
+    /**
+     * <>p</>
+     * .
+     * Flux all elements from Mongo passing
+     * for reactivate Flux
+     * @param id parameter ID
+     * @return return all elements from Mono passing
+     * for reactivate Mono and return Status OK.
+     *
+     **/
+    public Mono<Activo> findActivoById(final String id) {
+        System.out.println("ID"+id);
+        return activoService.findById(id);
+    }
+
+    /**
+     * <>p</>
+     * .
+     * Flux all elements from Mongo passing
+     * for reactivate Flux
+     * @param dni parameter ID
+     * @return return all elements from Mono passing
+     * for reactivate Mono and return Status OK.
+     *
+     **/
+    public Mono<Activo> findByDNI(final String dni) {
+        return activoService.findByDNI(dni);
+    }
+
+
+    public Mono<Activo> updateById(final String id) {
+        return findActivoById(id).map(m->{
+            m.setStatus("PERSONAL-ON");
+            return m;
+        }).flatMap(req->{
+            return activoService.update(id, req);
+        });
+    }
+
 
     /**
      * <>p</>
@@ -111,14 +148,11 @@ public class BancoService {
      * Flux all elements from Mongo passing
      * for reactivate Flux
      * @param dni parameter DNI
-     * @param typeCta parameter Type Cta.
      * @return Predicate
      *
      **/
-    public static Predicate<Pasivo> filterPasivo(final String dni,
-                                                 final String typeCta) {
-        return (Pasivo req) -> (req.getPersona().getDni().equals(dni)
-                && req.getType().equals(typeCta));
+    public static Predicate<Activo> filterPersonal(final String dni) {
+        return (Activo req) -> (req.getPersona().getDni().equals(dni) );
     }
 
     /**
@@ -130,47 +164,55 @@ public class BancoService {
      * @return Predicate
      *
      **/
-    public static Predicate<Activo> filterActivo(final String rucEmpresa) {
+    public static Predicate<Activo> filterEmpresa(final String rucEmpresa) {
         return (Activo req) -> (req.getEmpresa().getRuc().equals(rucEmpresa));
     }
+
 
     /**
      * <>p</>
      * .
      * Flux all elements from Mongo passing
      * for reactivate Flux
-     * @param pasivo parameter PASIVO
+     * @param activo parameter PASIVO
      * @return Mono
      *
      **/
-    public Mono<Pasivo> saveWithVerification(final Pasivo pasivo) {
+    public Mono<Activo> savePersonal(final Activo activo) {
         AtomicInteger maxMov = new AtomicInteger(0);
-        return Mono.from(findAllPasivo()
-                .filter(filterPasivo(pasivo.getPersona().getDni(),
-                        pasivo.getType()))
+
+        Empresa empresa = Empresa.builder().build();
+        empresa.setNombre("");
+        empresa.setDireccion("");
+        empresa.setRuc("");
+        activo.setEmpresa(empresa);
+
+        activo.setType("STAFF");//Personal
+        activo.setStatus("PERSONAL-OFF");
+
+        return Mono.from(findAllActivo()
+                .filter(filterPersonal(activo.getPersona().getDni()))
                         .map(req -> {
                             TarjetaCredito tarjetaCredito = TarjetaCredito.builder().build();
                             tarjetaCredito.setMontoTotal(req.getTarjeta().getMontoTotal());
                             String typeCLiente = ProductoEnum.valueOf(req.getTypeCliente()).getValue();
                             maxMov.set(req.getMaxMoviento());//Atomic
                             ObjectId id = req.getId();
-                            req = Pasivo.builder().build();
+                            req = Activo.builder().build();
                             req.setId(id);
-                            req.setCatalog("402");//isExist
                             req.setTypeCliente(typeCLiente);
-                            req.setMontoTotal(tarjetaCredito.getMontoTotal());
                             req.setMaxMoviento(maxMov.get());
                             req.setDescrip("Client "
-                                    + pasivo.getPersona().getDni()
+                                    + activo.getPersona().getDni()
                                     + " is exists type of cta.: "
-                                    + pasivo.getType());
+                                    + activo.getType());
                             return req;
-                        })).switchIfEmpty(pasivoService.save(pasivo))
+                        })).switchIfEmpty(activoService.save(activo))
                 .onErrorResume(error->{
                     log.error(error.getMessage());
-                    Pasivo pas = Pasivo.builder().build();
-                    pas.setDescrip("Finder error.");
-                    return Mono.just(pas);
+                    Activo act = Activo.builder().build();
+                    act.setDescrip("Finder error."+error.getCause().getMessage());
+                    return Mono.just(act);
                 });
     }
 
@@ -184,8 +226,18 @@ public class BancoService {
      *
      **/
     public Mono<Activo> saveBusiness(final Activo activo) {
+
+        Persona persona = Persona.builder().build();
+        persona.setNombre("");
+        persona.setApellido("");
+        persona.setDni("");
+        activo.setPersona(persona);
+
+        activo.setType("BUSINESS");
+        activo.setStatus("BUSSNESS-OFF");
+
         return Mono.from(findAllActivo()
-                .filter(filterActivo(activo.getEmpresa().getRuc()))
+                .filter(filterEmpresa(activo.getEmpresa().getRuc()))
                 .map(req -> {
                     /*activo.getTarjeta().setMontoConsumed(req.getTarjeta()
                             .getMontoConsumed()
@@ -194,7 +246,6 @@ public class BancoService {
                     ObjectId id = req.getId();
                     req = Activo.builder().build();
                     req.setId(id);
-                    req.setCatalog("402");//isExist
                     req.setTypeCliente(typeCLiente);
                     req.setDescrip("Client "
                             + activo.getEmpresa().getRuc()

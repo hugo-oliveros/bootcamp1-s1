@@ -2,6 +2,7 @@ package com.pe.nttdata.controller;
 
 
 import com.pe.nttdata.entity.Activo;
+import com.pe.nttdata.entity.Empresa;
 import com.pe.nttdata.entity.Pasivo;
 import com.pe.nttdata.services.BancoService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import javax.validation.constraints.NotNull;
-import java.util.Locale;
 
 /**
  *Implement EmpresaRepository. <br/>
@@ -54,19 +54,33 @@ public class BancoController {
         return bancoService.findAllActivo();
     }
 
-    @PostMapping(path = "/save",
+
+    @GetMapping(value = "/findByDNI/{dni}")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Activo> findByDNI(@PathVariable("dni")
+        @NotNull final String dni) {
+        return bancoService.findByDNI(dni);
+    }
+
+    @GetMapping(value = "/updateStatusByid/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Activo> updateStatusByDNI(@PathVariable("id")
+                                  @NotNull final String id) {
+        return bancoService.updateById(id);
+    }
+
+    @PostMapping(path = "/savePersonal",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Pasivo> save(@RequestBody @NotNull Pasivo pasivo) {
-        return bancoService.saveWithVerification(pasivo);
+    public Mono<Activo> save(@RequestBody @NotNull Activo activo) {
+        return bancoService.savePersonal(activo);
     }
 
     @PostMapping(path = "/saveBusiness",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<Activo> saveBusiness(@RequestHeader(name = "Accept-Language", required = false) Locale locale,
-                                     @RequestBody @NotNull Activo activo) {
+    public Mono<Activo> saveBusiness(@RequestBody @NotNull Activo activo) {
         return bancoService.saveBusiness(activo);
     }
 

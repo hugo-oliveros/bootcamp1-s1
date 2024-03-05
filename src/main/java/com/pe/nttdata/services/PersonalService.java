@@ -27,6 +27,7 @@ public class PersonalService {
         return personalRepository.save(persona);
     }
 
+
     public Mono<Void> deleteById(String id) {
         return personalRepository.deleteById(id);
     }

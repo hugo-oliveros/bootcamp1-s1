@@ -12,8 +12,8 @@ import lombok.Builder;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Document(collection = "Activo")
 @Data
@@ -44,10 +44,18 @@ public class Activo  extends BaseDomain implements Serializable {
      **/
     private String typeCliente;
 
+
     /**
      *.
      **/
-    private String catalog;
+    private String status;
+
+
+    /**
+     *.
+     **/
+    private Integer maxMoviento;
+
 
     /**
      *.

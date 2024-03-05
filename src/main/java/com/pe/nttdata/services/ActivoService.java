@@ -2,12 +2,15 @@ package com.pe.nttdata.services;
 
 import com.pe.nttdata.repository.ActivoRepository;
 import com.pe.nttdata.entity.Activo;
+import com.pe.nttdata.util.MapperUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import javax.rmi.CORBA.Util;
 import java.util.Optional;
 
 /**
@@ -98,10 +101,41 @@ public class ActivoService {
                 .flatMap(optional -> {
                     if (optional.isPresent()) {
                         activo.setId(new ObjectId(id));
+                        System.out.println(activo);
                         return activoRepository.save(activo);
                     }
                     return Mono.empty();
+                })
+                .switchIfEmpty(
+                        Mono.defer(() ->{
+                            Activo actError = Activo.builder().build();
+                            actError.setDescrip("The document was not found id document... "+id);
+                            return Mono.just(actError);
+                        }))
+                .onErrorResume(error->{
+                    Activo actError = Activo.builder().build();
+                    actError.setDescrip("Error found...: "+error);
+                    return Mono.just(actError);
                 });
+    }
+
+
+    public  Mono<Activo> findByDNI(final String dni) {
+        return Mono.from(activoRepository.findAll()
+                        .filter(f->f.getPersona().getDni().equals(dni))
+                        .map(m -> MapperUtils.mapper(Activo.class, m)))
+                .switchIfEmpty(
+                        Mono.defer(() ->{
+                            Activo actError = Activo.builder().build();
+                            actError.setDescrip("The document was not found... "+dni);
+                            return Mono.just(actError);
+                        }))
+                .onErrorResume(error->{
+                    Activo actError = Activo.builder().build();
+                    actError.setDescrip("Error found...: "+error);
+                    return Mono.just(actError);
+                    });
+
     }
 
     /**

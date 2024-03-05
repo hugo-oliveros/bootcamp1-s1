@@ -13,14 +13,13 @@ import java.io.Serializable;
 
 @Document(collection = "Empresa")
 @Data
-@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Empresa  extends BaseDomain implements Serializable{
+public class Empresa extends BaseDomain implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
