@@ -101,7 +101,6 @@ public class ActivoService {
                 .flatMap(optional -> {
                     if (optional.isPresent()) {
                         activo.setId(new ObjectId(id));
-                        System.out.println(activo);
                         return activoRepository.save(activo);
                     }
                     return Mono.empty();
