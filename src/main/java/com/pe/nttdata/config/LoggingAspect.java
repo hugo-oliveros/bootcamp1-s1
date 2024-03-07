@@ -50,7 +50,7 @@ public class LoggingAspect {
   private String aplicatiobName;
 
   private final int maxCharOutput = 3950;
-  private List<Object> listaParametrosTmp = null;
+
   private List<Object> listaParametros = new ArrayList<>();
   private String parametros;
 
@@ -66,10 +66,11 @@ public class LoggingAspect {
   @Around(value = "execution(* com.pe.nttdata.controller..*(..))")
   public Object aroundAdvice(ProceedingJoinPoint joinPoint) {
 
+    logSystem = AppProcesoLogDto.builder().build();
+    listaParametros.clear();
 
     try {
-      listaParametrosTmp = Arrays.asList(joinPoint.getArgs());
-      listaParametrosTmp.forEach(req -> {
+      Arrays.asList(joinPoint.getArgs()).forEach(req -> {
         if (!(req instanceof HttpServletRequest
                 || req instanceof BindingResult
                 || req instanceof UriComponentsBuilder)) {
@@ -132,7 +133,7 @@ public class LoggingAspect {
           final MethodSignature signature = (MethodSignature) joinPoint.getSignature();
           final Method method = signature.getMethod();
           logSystem.setClaseProgramacion(signature.getDeclaringType().getSimpleName());
-          logSystem.setClaseProgramacion(signature.getDeclaringType().getSimpleName());
+          logSystem.setMetodoProgramacion(method.getName());
           String claseHija = joinPoint.getTarget().getClass().getSimpleName();
           if (Optional.ofNullable(claseHija).isPresent()) {
             logSystem.setClaseProgramacion(claseHija);
