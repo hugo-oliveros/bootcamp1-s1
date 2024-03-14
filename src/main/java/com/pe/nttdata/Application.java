@@ -4,6 +4,7 @@ import com.pe.nttdata.config.AuditorAwareImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -16,6 +17,7 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 @EnableReactiveMongoRepositories
 @EnableReactiveMongoAuditing
 @EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableDiscoveryClient
 public class Application implements CommandLineRunner {
 
     public static void main(String[] args) {
